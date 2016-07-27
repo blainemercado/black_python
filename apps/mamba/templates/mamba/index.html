@@ -3,8 +3,57 @@
 <head>
 	<meta charset="utf-8">
 	<title>Home</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'mamba/css/style.css' %}">
+  	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+	<script>
+  	$( function() {
+    	$( "#datepicker" ).datepicker();
+  	} );
+  	</script>
 </head>
 <body>
-	<h1>Hello</h1>
+	<div id="container">
+		<h1>Welcome, please login or register if a new user!</h1>
+		<div class="left">
+			<h2>Register</h2>
+			<form action="register" method="post">
+				{% csrf_token %}
+				<input id="stuff" type="text" name="name" placeholder="Name (at least 3 characters)">
+				<input id="stuff" type="text" name="username" placeholder="Username (at least 3 characters)">
+				<input id="stuff" type="password" name="pass1" placeholder="Password">
+				<p class="notes">*Password should be at least 8 characters</p>
+				<input id="stuff" type="password" name="pass2" placeholder="Password confirmation">
+				<p class="notes">Date Hired at current position:</p>
+				<input id="stuff" type="text" id="datepicker" name="date_hired">
+				<input id="send" type="submit" name="register" value="Register">
+			</form>
+			{% if messages %}
+				{% for message in messages %}
+					{% if message.tags == 'info' %}
+						{{message}}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		</div>
+		<div class="right">
+			<h2>Login</h2>
+			<form action="login" method="post">
+				{% csrf_token %}
+				<input id="stuff" type="text" name="username" placeholder="Username">
+				<input id="stuff" type="password" name="pass1" placeholder="Password">
+				<input id="send" type="submit" name="login" value="Login">
+			</form>
+			{% if messages %}
+				{% for message in messages %}
+					{% if message.tags == 'warning' %}
+						{{message}}
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
 </body>
 </html>

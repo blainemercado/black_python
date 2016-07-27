@@ -1,0 +1,85 @@
+* {
+	vertical-align: baseline;
+	font-weight: inherit;
+	font-family: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	border: 0 none;
+	outline: 0;
+	padding: 0;
+	margin: 0;
+}
+	#container {
+		min-height: 900px;
+		width: 800px;
+	}
+		#container .nav {
+			height: 25px;
+			background: linear-gradient(#FAFAFA, #E0E0E0);
+			border: 1px solid darkgrey;
+			text-align: center;
+			padding-top: 10px;
+		}
+			.nav .home {
+				margin-right: 600px;
+			}
+		h1 {
+			font-family: sans-serif;
+			font-size: 30px;
+			color: darkorange;
+			margin: 25px;
+		}
+		h2 {
+			font-family: sans-serif;
+			font-size: 20px;
+			color: darkorange;
+			margin: 15px 0px 5px 25px;
+		}
+		table {
+			margin-left: 25px;
+			margin-bottom: 30px;
+			border-spacing: 0px;
+		}
+			table th {
+				background-color: darkgrey;
+			}
+			table tr:nth-child(even) {
+				background-color: #eee;
+			}
+			table td {
+				width: 200px;
+			}
+		.add {
+			margin-left: 25px;
+			font-family: sans-serif;
+			font-size: 20px;
+			color: darkblue;
+			margin-bottom: 25px;
+		}
+		#stuff {
+			border: 1px solid darkblue;
+			height:25px;
+			width: 150px;
+			margin-left: 30px;
+			display: block;
+		}
+		#send {
+			height: 25px;
+			width: 75px;
+			background-color: darkblue;
+			color: white;
+			border-radius: 7px;
+			padding-top: 2px;
+			margin-left: 30px;
+			margin-top: 10px;
+		}
+		p {
+			margin-left: 30px;
+			margin-top: 10px;
+			font-family: sans-serif;
+			font-size: 20px;
+			color: darkblue;
+		}
+		.notes {
+			font-size: 15px;
+		}

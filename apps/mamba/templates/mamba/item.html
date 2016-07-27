@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Item</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'mamba/css/style.css' %}">
+</head>
+<body>
+	<div id="container">
+		<div class="nav">
+			<a class="home" href="{%url 'mamba_dashboard' %}">My Wish List</a>
+			<a href="{%url 'mamba_logout' %}">Logout</a>
+		</div>
+		<h1>Wish List Item:</h1>
+		{% for item in item %}
+			<h1>{{item.item}}</h1>
+			{% if item.added_by.id != request.session.id %}
+				<a class="add" href="{%url 'mamba_addwish' id=item.id %}">Add to My Wish List</a>
+			{% endif %}
+			<h2>People who have added this product/item under their wish list:</h2>
+			<p>{{item.added_by.username}}</p>
+			{% for wished_by in item.wished_by.all %}
+				<p>{{wished_by.username}}</p>
+			{% endfor %}
+		{% endfor %}
+	</div>
+</body>
+</html>

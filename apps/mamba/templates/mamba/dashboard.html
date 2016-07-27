@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Wish List</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'mamba/css/style.css' %}">
+</head>
+<body>
+	<div id="container">
+		<div class="nav">
+			<a class="home" href="{%url 'mamba_dashboard' %}">My Wish List</a>
+			<a href="{%url 'mamba_logout' %}">Logout</a>
+		</div>
+		<h1>Hello, {{request.session.username}}!</h1>
+		<h2>Your Wish List:</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Added By</th>
+					<th>Date Added</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			{% for item in mywish %}
+			<tr>
+				<td><a href="{%url 'mamba_item' id=item.id %}">{{item.item}}</a></td>
+				<td>{{item.added_by.username}}</td>
+				<td>{{item.created_at}}</td>
+				<td>
+					<a href="{%url 'mamba_delete' id=item.id %}">Delete Item</a>
+				</td>
+			</tr>
+			{% endfor %}
+			{% for item in mywishes %}
+			<tr>
+				<td><a href="{%url 'mamba_item' id=item.id %}">{{item.item}}</a></td>
+				<td>{{item.added_by.username}}</td>
+				<td>{{item.created_at}}</td>
+				<td>
+					<a href="{%url 'mamba_remove' id=item.id %}">Remove From My Wish List</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<h2>Other People's Wish List:</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Added By</th>
+					<th>Date Added</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			{% for item in otherwish %}
+			<tr>
+				<td><a href="{%url 'mamba_item' id=item.id %}">{{item.item}}</a></td>
+				<td>{{item.added_by.username}}</td>
+				<td>{{item.created_at}}</td>
+				<td><a href="{%url 'mamba_addwish' id=item.id %}">Add to My Wish List</a></td>
+			</tr>
+			{% endfor %}
+		</table>
+		<a class="add" href="wish_items/create">Add Item</a>
+	</div>
+</body>
+</html>
